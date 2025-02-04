@@ -219,7 +219,7 @@ def crear_registros(dynamodb):
                 # Capturamos cualquier error que ocurra
                 print(f"An error occurred while adding item to {tabla_nombre}: {e}")
 
-# Función para convertir objetos Decimal a float o int
+# Función para convertir objetos Decimal a float o int (se utiliza para algunas salidas porque daba error en los decimales)
 def convertir_decimal(obj):
     if isinstance(obj, Decimal):
         # Si el valor es Decimal, lo convertimos a float (o int si es un número entero)
@@ -343,7 +343,7 @@ def eliminar_registro_comentarios():
     )
     print("Registro de Comentario eliminado:", json.dumps(response, indent=4))
 
-# Eliminar un registro de la tabla Cursos
+# 5- Eliminar un registro de la tabla Cursos
 def eliminar_registro_cursos():
     table = dynamodb.Table('Cursos')
     response = table.delete_item(
@@ -354,7 +354,7 @@ def eliminar_registro_cursos():
     )
     print("Registro de Cursos eliminado:", json.dumps(response, indent=4))
 
-# Eliminar un registro de la tabla Persona
+# 5 - Eliminar un registro de la tabla Persona
 def eliminar_registro_persona():
     table = dynamodb.Table('Persona')
     response = table.delete_item(
@@ -435,7 +435,6 @@ def filtrar_registros(dynamodb):
         print(json.dumps(item, default=convertir_decimal, indent=4))
 
 # 8 - Realizar una eliminación condicional de cada tabla (1 punto)
-
 def eliminar_registros_condicionalmente(dynamodb):
     # Eliminar un comentario si el título contiene la palabra "Nada"
     table_comentarios = dynamodb.Table("Comentario")

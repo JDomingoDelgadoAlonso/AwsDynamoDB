@@ -26,7 +26,7 @@ eliminar_registro_comentarios()
 eliminar_registro_cursos()
 eliminar_registro_persona()
 
-print("===============================================================================================")
+print("===============================================================================================\n")
 print("Ejercicio 6: Obtener todos los registros de cada tabla")
 mostrar_registros('Comentario')
 mostrar_registros('Persona')
